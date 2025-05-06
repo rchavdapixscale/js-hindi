@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import profilePic from "../assets/Group 1000005996@2x.png";
-import "../APP.CSS";
+// import "../APP.CSS";
 
 const Navbar = () => {
   const [openReport, setOpenReport] = useState(false);
