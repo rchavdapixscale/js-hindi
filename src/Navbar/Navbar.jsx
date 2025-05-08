@@ -43,7 +43,7 @@ const Navbar = () => {
             )}
           </li>
           <li style={{ padding: "10px" }}>
-            <Link to="/logout" style={linkStyle}>Inventory</Link>
+            <Link to="/" style={linkStyle}>Inventory</Link>
           </li>
           <li style={{ padding: "10px" }}>
             <Link to="/logout" style={linkStyle}>Order</Link>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { addRole, updateRole } from "../api/PostsApi";
+import Button from "../BtnComponents/btn";
 
 const RoleForm = ({
   data,
@@ -126,11 +127,36 @@ const RoleForm = ({
 
   return (
     <>
-      <label htmlFor="roleName" style={{fontSize:"24px", paddingLeft:"29px", marginBottom:"40px", fontWeight:"600", lineHeight:"100%"}}>Role Details Add or Edit</label>
+      <label
+        htmlFor="roleName"
+        style={{
+          fontSize: "24px",
+          paddingLeft: "29px",
+          marginBottom: "40px",
+          fontWeight: "600",
+          lineHeight: "100%",
+        }}
+      >
+        Role Details Add or Edit
+      </label>
       <form onSubmit={handleFormSubmit}>
-        
-        <div className="form-group" style={{display:"flex", flexDirection:"column", backgroundColor:""}}>
-          <label htmlFor="roleName" style={{fontWeight:"600", marginBottom:"6px", color:"#333", fontSize:"18px"}}>
+        <div
+          className="form-group"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            backgroundColor: "",
+          }}
+        >
+          <label
+            htmlFor="roleName"
+            style={{
+              fontWeight: "600",
+              marginBottom: "6px",
+              color: "#333",
+              fontSize: "18px",
+            }}
+          >
             Role Name<span style={{ color: "red" }}>*</span>
           </label>
           <input
@@ -144,13 +170,7 @@ const RoleForm = ({
         </div>
 
         {loading && <div className="loaderp"></div>}
-        <button
-          style={{ background: "grey" }}
-          type="submit"
-          value={isEmpty ? "Add" : "Edit"}
-        >
-          {isEmpty ? "Add" : "Edit"}
-        </button>
+        <Button label={isEmpty ? "Add" : "Edit"} type="submit" />
       </form>
     </>
   );

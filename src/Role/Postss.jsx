@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { getRoles, deleteRole } from "../api/PostsApi";
 import "../APP.CSS";
-import RoleForm from "./RoleForm"; 
+import RoleForm from "./RoleForm";
 import ReactPaginate from "react-paginate";
+import Button from "../BtnComponents/btn"
 // import {  Form } from "react-router-dom";
 
 export const Postss = () => {
@@ -10,8 +11,6 @@ export const Postss = () => {
   const [updateRoleApi, setupdateRoleApi] = useState({});
   const [currentPage, setCurrentPage] = useState(0);
   const rowsPerPage = 5;
-
-  
 
   const getRoleData = async () => {
     const res = await getRoles();
@@ -66,20 +65,52 @@ export const Postss = () => {
       </div>
       <table>
         <thead>
-          <tr style={{background:"grey"}}>
-            <th style={{padding:"20px 30px", fontSize:"25px", fontWeight:"700"}}>Name</th>
-            <th style={{padding:"20px 30px", fontSize:"25px", fontWeight:"700"}}>Action</th>
+          <tr style={{ background: "grey" }}>
+            <th
+              style={{
+                padding: "20px 30px",
+                fontSize: "25px",
+                fontWeight: "700",
+              }}
+            >
+              Name
+            </th>
+            <th
+              style={{
+                padding: "20px 30px",
+                fontSize: "25px",
+                fontWeight: "700",
+              }}
+            >
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
           {currentData &&
             currentData.map((item, index) => (
-              
-              <tr key={item.id }>
-                <td style={{border:"1px solid black", background:"white", textAlign:"center", fontSize:"20px", fontFamily:"sans-serif", padding:"15px 35px"}}>{item.name || index}</td>
-                <td style={{background:"white"}}>
-                  <button onClick={() => setupdateRoleApi(item)}>Edit</button>
-                  <button onClick={() => handleDelete(item.id)}>Delete</button>
+              <tr key={item.id}>
+                <td
+                  style={{
+                    border: "1px solid black",
+                    background: "white",
+                    textAlign: "center",
+                    fontSize: "20px",
+                    fontFamily: "sans-serif",
+                    padding: "15px 35px",
+                  }}
+                >
+                  {item.name || index}
+                </td>
+                <td style={{ background: "white" }}>
+                  <Button
+                    label="Edit"
+                    onClick={() => setupdateRoleApi(item)}
+                  />
+                  <Button
+                    label="Delete"
+                    onClick={() => handleDelete(item.id)}
+                  />
                 </td>
               </tr>
             ))}
@@ -101,4 +132,3 @@ export const Postss = () => {
 };
 
 export default Postss;
-
