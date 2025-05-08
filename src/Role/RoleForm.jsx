@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { addRole, updateRole } from "../api/PostsApi";
 import Button from "../BtnComponents/btn";
+import InputField from "../InputField/Input";
 
 const RoleForm = ({
   data,
@@ -131,43 +132,22 @@ const RoleForm = ({
         htmlFor="roleName"
         style={{
           fontSize: "24px",
-          paddingLeft: "29px",
           marginBottom: "40px",
           fontWeight: "600",
           lineHeight: "100%",
+        
         }}
       >
         Role Details Add or Edit
       </label>
-      <form onSubmit={handleFormSubmit}>
-        <div
-          className="form-group"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            backgroundColor: "",
-          }}
-        >
-          <label
-            htmlFor="roleName"
-            style={{
-              fontWeight: "600",
-              marginBottom: "6px",
-              color: "#333",
-              fontSize: "18px",
-            }}
-          >
-            Role Name<span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            id="roleName"
-            type="text"
-            name="name"
-            value={addData.name}
-            onChange={handleInputChange}
-            autoComplete="off"
-          />
-        </div>
+      <form onSubmit={handleFormSubmit} style={{marginTop:"30px"}}>
+        <InputField
+          label="Role Name"
+          name="name"
+          value={addData.name}
+          onChange={handleInputChange}
+          required
+        />
 
         {loading && <div className="loaderp"></div>}
         <Button label={isEmpty ? "Add" : "Edit"} type="submit" />
