@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { postData, updateData } from "../api/PostApi";
 import Button from "../BtnComponents/btn";
-import InputField from "../InputField/Input";
+import InputField from "../InputField/Input"; 
 
 export const Form = ({ data, setData, updateDataApi, refreshData }) => {
   const [addData, setAddData] = useState({

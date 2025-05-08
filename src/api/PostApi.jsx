@@ -13,8 +13,7 @@ const api = axios.create({
   },
 });
 
-// export const getData = () => {
-//   return api.get("/1");
+
 
 // };
 

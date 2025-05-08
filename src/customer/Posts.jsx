@@ -61,7 +61,7 @@ export const Posts = () => {
 
   return (
     <>
-      <section className="section-form">
+      <section className="section-form" >
         <Form
           data={currentData}
           setData={setData}

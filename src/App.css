@@ -22,14 +22,14 @@ select {
 
 
 
-.main-section {
+/* .main-section {
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .section-form {
     padding: 1.6rem;
@@ -71,10 +71,7 @@ select {
         gap: 3.2rem;
     }
 
-
-
 }
-
 
 /* loader */
 
@@ -204,3 +201,6 @@ select {
     color: #000000;
     width: 326px;
 }
+
+/* 
+ */

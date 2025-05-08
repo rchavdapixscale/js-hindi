@@ -6,14 +6,26 @@ import "../APP.CSS";
 const Navbar = () => {
   const [openReport, setOpenReport] = useState(false);
 
-
   return (
     <>
-      <div style={{ height: "100px", width: "240px", position: "absolute", zIndex: "2", left: "0" }}>
+      <div
+        style={{
+          height: "100px",
+          width: "240px",
+          position: "absolute",
+          zIndex: "2",
+          left: "0",
+        }}
+      >
         <img
           src={profilePic}
           alt="Profile"
-          style={{ height: "60px", width: "225px", paddingTop: "25px", paddingLeft: "8px" }}
+          style={{
+            height: "60px",
+            width: "225px",
+            paddingTop: "25px",
+            paddingLeft: "8px",
+          }}
         />
       </div>
 
@@ -29,33 +41,65 @@ const Navbar = () => {
           left: "0",
         }}
       >
-        <ul style={{ paddingLeft: "20px", paddingTop: "80px", listStyleType: "none", marginTop: "20px" }}>
+        <ul
+          style={{
+            paddingLeft: "20px",
+            paddingTop: "80px",
+            listStyleType: "none",
+            marginTop: "20px",
+          }}
+        >
+          
           <li style={{ padding: "10px" }}>
-            <Link to="" style={linkStyle}>Dashboard</Link>
+            <Link to="" style={linkStyle}>
+              Dashboard
+            </Link>
           </li>
-          <li style={{ padding: "10px", cursor: "pointer" }} onClick={() => setOpenReport(!openReport)}>
+          <li
+            style={{ padding: "10px", cursor: "pointer" }}
+            onClick={() => setOpenReport(!openReport)}
+          >
             <span style={linkStyle}>Master ▾</span>
             {openReport && (
               <ul style={dropdownStyle}>
-                <li><Link to="/customer" style={sublinkStyle}>Customer</Link></li>
-                <li><Link to="/Postss" style={sublinkStyle}>Role</Link></li>
+                <li>
+                  <Link to="/customer" style={sublinkStyle}>
+                    Customer
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Postss" style={sublinkStyle}>
+                    Role
+                  </Link>
+                </li>
               </ul>
             )}
           </li>
           <li style={{ padding: "10px" }}>
-            <Link to="/" style={linkStyle}>Inventory</Link>
+            <Link to="/" style={linkStyle}>
+              Inventory
+            </Link>
           </li>
           <li style={{ padding: "10px" }}>
-            <Link to="/logout" style={linkStyle}>Order</Link>
+            <Link to="/logout" style={linkStyle}>
+              Order
+            </Link>
           </li>
           <li style={{ padding: "10px" }}>
-            <Link to="/logout" style={linkStyle}>Report</Link>
+            <Link to="/logout" style={linkStyle}>
+              Report
+            </Link>
           </li>
           <li style={{ padding: "10px" }}>
-            <Link to="/logout" style={linkStyle}>Log Out</Link>
-          </li>
-          <li style={{ padding: "10px" }}>
-            <Link to="/logout" style={linkStyle}>Report</Link>
+            <span
+              style={linkStyle}
+              onClick={() => {
+                localStorage.removeItem("auth");
+                window.location.href = "/login";
+              }}
+            >
+              Log Out
+            </span>
           </li>
         </ul>
       </aside>
