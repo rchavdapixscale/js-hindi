@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../App"; // Assuming you've placed the Uiverse CSS here
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -8,7 +9,6 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     if (username === "admin" && password === "admin") {
       localStorage.setItem("auth", "true");
       navigate("/customer");
@@ -18,32 +18,44 @@ const Login = () => {
   };
 
   return (
-    
-      <div style={{ padding: "50px", textAlign: "center", border:"1px solid black", marginLeft:"20px", backgroundColor:"#7ca1f2"}}>
-        <h2 style={{fontSize:"30px", color:"white"}}>Login</h2>
-        <form onSubmit={handleLogin}>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <br />
-          <br />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <br />
-          <br />
-          <button type="submit" style={{background:"white", padding:"8px 25px"}}>Login</button>
-        </form>
+    <form className="form_container" onSubmit={handleLogin}>
+      <div className="title_container">
+        <p className="title">Login</p>
       </div>
-
+      <div className="input_container">
+        <label className="input_label" htmlFor="email_field">
+          Username
+        </label>
+        <input
+          placeholder="admin"
+          type="text"
+          className="input_field"
+          id="email_field"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </div>
+      <div className="input_container">
+        <label className="input_label" htmlFor="password_field">
+          Password
+        </label>
+        <input
+          placeholder="Password"
+          type="password"
+          className="input_field"
+          id="password_field"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
+      <button type="submit" className="sign-in_btn">
+        <span>Sign In</span> 
+      </button>
+      <span style={{fontSize:"13px", letterSpacing:"1px"}}>Don't have an account? <a href="" style={{color: "rgb(0, 149, 247)", textDecoration:"none", paddingLeft:"10px", fontSize:"15px"}}>Sign Up</a></span>
+      <span style={{fontSize:"13px", fontFamily:"sans-serif"}}>Forget password?</span>
+    </form>
   );
 };
 

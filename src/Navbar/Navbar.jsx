@@ -49,10 +49,14 @@ const Navbar = () => {
             marginTop: "20px",
           }}
         >
-          
           <li style={{ padding: "10px" }}>
             <Link to="" style={linkStyle}>
               Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link to="/otp" style={sublinkStyle}>
+              OTP Generator
             </Link>
           </li>
           <li
