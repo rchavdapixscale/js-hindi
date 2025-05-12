@@ -1,23 +1,24 @@
 import Button from "../BtnComponents/btn";
+import "./Table.css"
 
 const Table = ({ columns, data, onEdit, onDelete }) => {
   return (
-    <table style={{ border:"1px", marginTop: "40px", width: "100%", paddingTop:"40px" }}>
+    <table className="table-row">
       <thead>
-        <tr style={{ background: "#d6c7c7", fontSize: "25px", letterSpacing: "1px", }}>
+        <tr className="table-now">
           {columns.map((col, index) => (
-            <th key={index} style={{ padding: "15px" }}>{col.header}</th>
+            <th className="now-me" key={index}>{col.header}</th>
           ))}
-          <th style={{ padding: "15px", fontSize:""}}>Action</th>
+          <th className="now-me">Action</th>
         </tr>
       </thead>
       <tbody>
         {data.map((item, index) => (
-          <tr key={item.id || index} style={{ backgroundColor: "#fff" }}>
+          <tr className="itme-can" key={item.id || index}>
             {columns.map((col, colIndex) => (
-              <td style={{border:"1px solid",fontSize:"20px", textAlign:"center"}} key={colIndex}>{item[col.accessor] ?? "N/A"}</td>
+              <td className="itme-do" key={colIndex}>{item[col.accessor] ?? "N/A"}</td>
             ))}
-            <td style={{border:"1px solid", textAlign:"center"}}>
+            <td className="td-can">
               <Button label="Edit" onClick={() => onEdit(item)} />
               <Button label="Delete" onClick={() => onDelete(item.id)} />
             </td>

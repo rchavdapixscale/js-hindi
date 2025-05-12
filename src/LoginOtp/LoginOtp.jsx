@@ -1,123 +1,129 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./LoginOtp.css";
 
-const OtpGenerator = () => {
+const LoginOtp = () => {
   const [mobile, setMobile] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
-  const [otpInput, setOtpInput] = useState(["", "", "", "", "", ""]);
+  const [otpInput, setOtpInput] = useState("");
+  const [timer, setTimer] = useState(60);
   const [otpStatus, setOtpStatus] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let interval;
+    if (otpSent && timer > 0) {
+      interval = setInterval(() => setTimer((prev) => prev - 1), 1000);
+    }
+    return () => clearInterval(interval);
+  }, [otpSent, timer]);
 
   const handleSendOtp = () => {
     if (!mobile.match(/^\d{10}$/)) {
-      alert("Please enter a valid 10-digit mobile number");
+      alert("Enter valid 10-digit mobile number");
       return;
     }
-
     const generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
     setOtp(generatedOtp);
     setOtpSent(true);
-    setOtpStatus("");
-    setOtpInput(["", "", "", "", "", ""]);
+    setTimer(60);
+    setOtpInput("");
     console.log("OTP sent:", generatedOtp);
   };
 
-  const handleOtpChange = (index, value) => {
-    if (!/^\d?$/.test(value)) return;
-    const newOtpInput = [...otpInput];
-    newOtpInput[index] = value;
-    setOtpInput(newOtpInput);
-
-    if (value && index < 5) {
-      const nextInput = document.getElementById(`otp-input-${index + 1}`);
-      if (nextInput) nextInput.focus();
-    }
-  };
-
-  const handleSubmitOtp = () => {
-    const enteredOtp = otpInput.join("");
-    if (enteredOtp === otp) {
-      setOtpStatus("success");
-      alert("Login successful!");
-      // TODO: You can redirect or set auth token here
+  const handleVerify = (e) => {
+    e.preventDefault();
+    if (otpInput === otp) {
+      localStorage.setItem("auth", "true");
+      navigate("/customer");
     } else {
       setOtpStatus("error");
     }
   };
 
   return (
-    <div
-      style={{
-        border: "1px solid black",
-        width: "300px",
-        height: "300px",
-        padding: "30px",
-        background:"rgb(64, 81, 137)"
-      }}
+    <form
+      style={{ position: "absolute", top: "10%" }}
+      className="form_container"
+      onSubmit={handleVerify}
     >
-      <h2 style={{ textAlign: "center", fontSize: "20px", color:"white",letterSpacing:"1.2px" }}>OTP Generator</h2>
-
-      <input
-        style={{ color: "black", marginLeft: "50px" }}
-        type="text"
-        placeholder="Enter mobile number"
-        value={mobile}
-        onChange={(e) => setMobile(e.target.value)}
-      />
-      <div style={{ marginLeft: "100px", paddingTop: "20px" }}>
-        <button onClick={handleSendOtp}>Send OTP</button>
+      <div className="title_container">
+        <p className="title">Login with OTP</p>
       </div>
+
+      <div className="input_container">
+        <label className="input_label" htmlFor="mobile_field">
+          Mobile Number
+        </label>
+        <input
+          placeholder="Enter 10-digit mobile"
+          type="text"
+          className="input_field"
+          id="mobile_field"
+          value={mobile}
+          onChange={(e) => setMobile(e.target.value)}
+          disabled={otpSent}
+          required
+        />
+      </div>
+      {otpSent && (
+        <button
+          type="button"
+          className="edit_inline_btn"
+          onClick={() => {
+            setOtpSent(false);
+            setOtp("");
+            setOtpInput("");
+            setTimer(60);
+            setOtpStatus("");
+          }}
+        >
+          Edit
+        </button>
+      )}
 
       {otpSent && (
         <>
-          <table border="1" style={{ marginTop: "10px", marginBottom: "10px" }}>
-            <tbody>
-              <tr>
-                <td style={{color:"white"}}>OTP Sent:</td>
-                <td style={{color:"white"}}>{otp}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div>
-            <span style={{fontSize:"20px", width:"200px", height:"30px", color:"white"}}>Please enter the code we have sent you.</span>
+          <div className="enter-otp">
+            <h3>Enter OTP</h3>
+            <div style={{ display: "flex", gap: "10px" }}>
+              {[...Array(6)].map((_, i) => (
+                <input className="box-and" key={i} type="text" maxLength="1" />
+              ))}
+            </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "row",
-              gap: "5px",
-              paddingTop: "30px",
-            }}
-          >
-            {otpInput.map((digit, index) => (
-              <input
-                style={{ height: "30px", width: "30px", color: "black" }}
-                key={index}
-                id={`otp-input-${index}`}
-                type="text"
-                maxLength="1"
-                value={digit}
-                onChange={(e) => handleOtpChange(index, e.target.value)}
-              />
-            ))}
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: "10px" }}>
-            <button onClick={handleSubmitOtp}>Submit OTP</button>
-          </div>
-
-          <div style={{ textAlign: "center", marginTop: "10px" }}>
-            {otpStatus === "success" && (
-              <p style={{ color: "green" }}>OTP Verified! You are logged in.</p>
-            )}
-            {otpStatus === "error" && (
-              <p style={{ color: "red" }}>Wrong OTP. Please try again.</p>
-            )}
-          </div>
+          <p className="otpvalid">
+            OTP valid for:{" "}
+            <strong>00:{timer < 10 ? `0${timer}` : timer}</strong>
+          </p>
         </>
       )}
-    </div>
+
+      {!otpSent ? (
+        <button type="button" className="sign-in_btns" onClick={handleSendOtp}>
+          <span>Send OTP</span>
+        </button>
+      ) : (
+        <button type="submit" className="sign-in_btns">
+          <span>Verify & Login</span>
+        </button>
+      )}
+
+      {otpStatus === "error" && (
+        <p className="invalidotp">Invalid OTP. Try again. </p>
+      )}
+
+      <div className="sign-account">
+        <span>
+          Don’t have an account? <a href="#"> Sign Up </a>
+        </span>
+        <br />
+        <span>Forgot password?</span>
+      </div>
+    </form>
   );
 };
 
-export default OtpGenerator;
+export default LoginOtp;

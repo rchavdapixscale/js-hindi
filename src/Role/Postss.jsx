@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { getRoles, deleteRole } from "../api/PostsApi";
-import "../APP.CSS";
 import RoleForm from "./RoleForm";
-import Button from "../BtnComponents/btn";
+// import Button from "../BtnComponents/btn";
 import Pagination from "../PageNation/PageNation";
 import Table from "../TableComponents/Table";
+import "./Postss.css"
 // import {  Form } from "react-router-dom";
 
 export const Postss = () => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../App"; // Assuming you've placed the Uiverse CSS here
+import "./LoginPage.css"
 
 const Login = () => {
   const [username, setUsername] = useState("");

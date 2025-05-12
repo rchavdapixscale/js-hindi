@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
-import "../APP.CSS"; 
+import "./PageNation.css"
 
 const Pagination = ({ pageCount, onPageChange }) => {
   return (

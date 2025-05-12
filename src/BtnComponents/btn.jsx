@@ -1,27 +1,25 @@
+import "./btn.css";
+
 const Button = ({ type = "submit", label, onClick, disabled = false }) => {
-  const getStyle = () => {
+  const getClassName = () => {
     switch (label.toLowerCase()) {
       case "edit":
-        return { backgroundColor: "orange", color: "white", margin: "0 5px" };
+        return "btn-edit";
       case "delete":
-        return { backgroundColor: "red", color: "white", margin: "0 5px" };
+        return "btn-delete";
       case "add":
+        return "btn-add";
       case "submit":
-        return { backgroundColor: "grey", color: "white", margin: "0 5px" };
+        return "btn-submit";
       default:
-        return { backgroundColor: "#ccc", color: "#000" };
+        return "btn-default";
     }
   };
 
   return (
     <button
+      className={`btn-new ${getClassName()}`}
       type={type}
-      style={{
-        padding: "8px 15px",
-        border: "none",
-        borderRadius: "4px",
-        ...getStyle(),
-      }}
       onClick={onClick}
       disabled={disabled}
     >

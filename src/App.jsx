@@ -10,7 +10,7 @@ import NavBar from "./Navbar/Navbar";
 import Postss from "./Role/Postss";
 import Login from "./LoginPage/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
-import OtpGenerator from ".//LoginOtp/LoginOtp";
+import LoginOtp from ".//LoginOtp/LoginOtp";
 
 
 const AppRoutes = () => {
@@ -18,7 +18,6 @@ const AppRoutes = () => {
   const isLoginPage = location.pathname === "/login";
 
   if (isLoginPage) {
-    // Render login page without shared layout
     return (
       <div className="container-me">
         <Routes>
@@ -28,17 +27,17 @@ const AppRoutes = () => {
     );
   }
 
-  // Render rest of the app with layout
   return (
     <div className="app-container">
       <NavBar />
       <section className="main-section">
         <Routes>
+          
           <Route
-            path="/otp"
+            path="/LoginOtp"
             element={
               <ProtectedRoute>
-                <OtpGenerator />
+                <LoginOtp />
               </ProtectedRoute>
             }
           />

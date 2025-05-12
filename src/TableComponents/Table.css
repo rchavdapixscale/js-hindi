@@ -1,0 +1,32 @@
+.table-row{
+    border: 1px;
+    margin-top: 40px;
+    width: 100%;
+    padding-top: 40px;
+}
+
+.table-row thead .table-now{
+    background: #d6c7c7;
+    font-size: 25px;
+    letter-spacing: 1px;
+}  
+
+
+.now-me{
+    padding: 15px;
+}
+
+.itme-can{
+    background-color: #fff;
+}
+
+.itme-do{
+    border: 1px solid;
+    font-size: 20px;
+    text-align: center;
+}
+
+.td-can{
+    border: 1px solid;
+    text-align: center;
+}

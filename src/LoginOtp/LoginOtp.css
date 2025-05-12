@@ -1,0 +1,129 @@
+.sign-account {
+    font-size: 13px;
+    margin-top: -10px;
+}
+
+span a {
+    color: rgb(0, 149, 247);
+    text-decoration: none;
+}
+
+.enter-otp h3 {
+    color: black;
+    margin-top: 5px;
+}
+
+.box-and {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
+}
+
+.otpvalid {
+    color: #555;
+    font-size: 14px;
+
+}
+
+.sign-in_btns {
+    width: 100%;
+    height: 40px;
+    border: 0;
+    background: #115DFC;
+    border-radius: 7px;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+.title_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.title {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+    color: #212121;
+}
+
+.input_container {
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.input_label {
+    color: #000000;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding-bottom: 10px;
+}
+
+
+.input_field {
+    width: auto;
+    height: 40px;
+    padding-left: 6px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    filter: drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    color: black;
+}
+
+.input_field:focus {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 0px 2px #242424;
+    background-color: transparent;
+}
+
+.invalidotp {
+    color: red;
+    margin-top: 2px;
+}
+
+
+.input_with_edit .input_edit_wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input_with_edit .input_edit_wrapper .input_field {
+    flex: 1;
+    padding-right: 60px;
+}
+
+.edit_inline_btn {
+    position: absolute;
+    right: 40px;
+    top: 26%;
+    padding: 8px 24px;
+    font-size: 12px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 45px;
+}
+
+.edit_inline_btn:hover {
+    background-color: #0056b3;
+}

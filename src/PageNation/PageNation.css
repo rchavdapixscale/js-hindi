@@ -1,0 +1,32 @@
+.pagination {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.pagination__link {
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #007bff;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: rgb(146 124 124);
+    color: white;
+    font-size: 24px;
+}
+
+.pagination__link--active {
+    background-color: #395879;
+    color: white;
+}
+
+.pagination__link--disabled {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
