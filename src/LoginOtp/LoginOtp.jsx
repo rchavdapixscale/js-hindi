@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect  } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginOtp.css";
+
 
 const LoginOtp = () => {
   const [mobile, setMobile] = useState("");
@@ -30,7 +31,7 @@ const LoginOtp = () => {
     setOtpSent(true);
     setTimer(60);
     setOtpInput("");
-    console.log("OTP sent:", generatedOtp);
+    console.log("OTP sent:", generatedOtp); 
   };
 
   const handleVerify = (e) => {
@@ -44,11 +45,7 @@ const LoginOtp = () => {
   };
 
   return (
-    <form
-      style={{ position: "absolute", top: "10%" }}
-      className="form_container"
-      onSubmit={handleVerify}
-    >
+    <form style={{position:"absolute", top:"10%"}} className="form_container" onSubmit={handleVerify}>
       <div className="title_container">
         <p className="title">Login with OTP</p>
       </div>
@@ -68,29 +65,19 @@ const LoginOtp = () => {
           required
         />
       </div>
-      {otpSent && (
-        <button
-          type="button"
-          className="edit_inline_btn"
-          onClick={() => {
-            setOtpSent(false);
-            setOtp("");
-            setOtpInput("");
-            setTimer(60);
-            setOtpStatus("");
-          }}
-        >
-          Edit
-        </button>
-      )}
 
       {otpSent && (
         <>
           <div className="enter-otp">
             <h3>Enter OTP</h3>
-            <div style={{ display: "flex", gap: "10px" }}>
+            <div  style={{ display: "flex", gap: "10px" }}>
               {[...Array(6)].map((_, i) => (
-                <input className="box-and" key={i} type="text" maxLength="1" />
+                <input
+                  className="box-and"
+                  key={i}
+                  type="text"
+                  maxLength="1"
+                />
               ))}
             </div>
           </div>
@@ -117,7 +104,8 @@ const LoginOtp = () => {
 
       <div className="sign-account">
         <span>
-          Don’t have an account? <a href="#"> Sign Up </a>
+          Don’t have an account?{" "}
+          <a href="#"> Sign Up </a>
         </span>
         <br />
         <span>Forgot password?</span>

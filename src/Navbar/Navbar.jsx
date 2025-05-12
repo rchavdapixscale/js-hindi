@@ -60,6 +60,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="navbar-list-item">
+            <Link to="/OtpApiBase" className="navbar-link">
+              Report
+            </Link>
+          </li>
+          <li className="navbar-list-item">
             <span
               className="navbar-link navbar-pointer"
               onClick={() => {

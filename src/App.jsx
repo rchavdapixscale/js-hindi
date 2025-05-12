@@ -11,6 +11,7 @@ import Postss from "./Role/Postss";
 import Login from "./LoginPage/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
 import LoginOtp from ".//LoginOtp/LoginOtp";
+import OtpApiBase from ".//OtpApibase/OtpApibase";
 
 
 const AppRoutes = () => {
@@ -65,6 +66,7 @@ const AppRoutes = () => {
               </ProtectedRoute>
             }
           />
+          <Route path="/OtpApiBase" element={<OtpApiBase />} />
         </Routes>
       </section>
     </div>

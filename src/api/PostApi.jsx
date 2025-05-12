@@ -13,10 +13,6 @@ const api = axios.create({
   },
 });
 
-
-
-// };
-
 export const getData = (filtersa = {}) => {
   const defaultFilters = {
     where: {
